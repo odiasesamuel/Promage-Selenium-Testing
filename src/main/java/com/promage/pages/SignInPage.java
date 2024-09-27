@@ -10,6 +10,7 @@ public class SignInPage extends BasePage {
     private By employeeIDInputField = By.name("employee_id");
     private By signInButton = By.xpath("/html/body/div[1]/div[2]/div[2]/div/form/button");
     private By errorMessage = By.cssSelector("#\\:R9d7qbta\\:-form-item-message");
+    private By linkToSignupPage = By.xpath("/html/body/div[1]/div[2]/div[2]/p/a");
 
     public void setEmailInputField(String email) {
         set(emailInputField, email);
@@ -36,7 +37,8 @@ public class SignInPage extends BasePage {
         return errorElement.getText();
     }
 
-    public void goToSignUpPage() {
-
+    public SignUpPage clickLinkToSignUpPage() {
+        click(linkToSignupPage);
+        return new SignUpPage();
     }
 }

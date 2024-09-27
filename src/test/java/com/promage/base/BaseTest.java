@@ -1,6 +1,7 @@
 package com.promage.base;
 
 import com.promage.pages.SignInPage;
+import com.promage.pages.SignUpPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -15,6 +16,7 @@ public class BaseTest {
     private WebDriver driver;
     protected BasePage basePage;
     protected SignInPage signInPage;
+    protected SignUpPage signUpPage;
     private String PROMAGE_URL = "https://promage-project-management-system.onrender.com/";
 
     @BeforeClass
@@ -30,6 +32,7 @@ public class BaseTest {
         basePage.setDriver(driver);
         setUtiliyDriver();
         signInPage = new SignInPage();
+        signUpPage = new SignUpPage();
     }
 
     @AfterClass

@@ -1,5 +1,6 @@
 package com.promage.test;
 
+import com.promage.base.BasePage;
 import com.promage.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
