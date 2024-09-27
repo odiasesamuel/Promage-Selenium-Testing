@@ -17,4 +17,9 @@ public class JavaScriptUtility extends Utility{
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
     }
+
+    public static void clearSessionStorage() {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("window.sessionStorage.clear();");
+    }
 }

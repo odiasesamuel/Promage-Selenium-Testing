@@ -3,7 +3,6 @@ package com.promage.pages;
 import com.promage.base.BasePage;
 import org.openqa.selenium.By;
 
-import static utilities.JavaScriptUtility.scrollToElementJS;
 
 public class SignUpPage extends BasePage {
 
@@ -12,10 +11,36 @@ public class SignUpPage extends BasePage {
     private By organisationEmailInputField = By.name("organisation_email");
     private By administratorNameInputField = By.name("administrator_name");
     private By administratorEmailInputField = By.name("administrator_email");
-    private By submitButton = By.xpath("/html/body/div[1]/div[2]/div[2]/div/form/div[2]/button");
 
-    public boolean isNavigationTextBackToSignInPageDisplayed() {
-        return find(navigationTextBackToSignInPage).isDisplayed();
+    private By employeeNameInputField = By.name("employee_name");
+    private By employeeEmailInputField = By.name("employee_email");
+    private By jobTitleEmployeeInputField = By.name("job_title");
+    private By nextIcon = By.cssSelector("body > div.text-white.grid.grid-cols-\\[repeat\\(12\\,_1fr\\)\\].grid-rows-\\[auto\\].min-h-screen > div.bg-\\[\\#FAFFFB\\].col-start-7.col-end-13.md\\:col-start-1.grid.place-content-center.my-5 > div.flex.flex-col.items-center > div > form > div.flex.items-center.justify-between.text-black > svg.lucide.lucide-chevron-right.w-10.h-8.cursor-pointer");
+
+    private By revenueForLastQuarterInputField = By.name("last_quarter_revenue");
+    private By projectForLastQuarterInputField = By.name("last_quarter_project");
+    private By timeForLastQuarterInputField = By.name("last_quarter_time");
+    private By numberOfEmployeeLastQuarterInputField = By.name("last_quarter_resources");
+
+    private By submitButton = By.xpath("/html/body/div[1]/div[2]/div[2]/div/form/div[2]/button");
+    private By errorModal = By.cssSelector("li > div > div");
+
+    public boolean isOrganisationFormDisplayed() {
+        waitForElement(organisationNameInputField, 10); // Wait for the element to be visible
+        return find(organisationNameInputField).isDisplayed();
+    }
+
+    public boolean isEmployeeFormDisplayed() {
+        return find(employeeNameInputField).isDisplayed();
+    }
+
+    public boolean isMetricFormDisplayed() {
+        return find(revenueForLastQuarterInputField).isDisplayed();
+    }
+
+    public boolean isErrorModalDisplayed() {
+        waitForElement(errorModal, 10);
+        return find(errorModal).isDisplayed();
     }
 
     public void setOrganisationNameInputField(String organisationName) {
@@ -34,21 +59,82 @@ public class SignUpPage extends BasePage {
         set(administratorEmailInputField, administratorEmail);
     }
 
-    public SignUpPage clickSubmitButton() {
+    public SignUpPage clickOrganisationDetailSubmitButton() {
         click(submitButton);
         return new SignUpPage();
     }
 
     public SignUpPage fillOrganisationDetailsForm(String organisationName, String organisationEmail, String administratorName, String administratorEmail) {
-        waitForElement(organisationNameInputField, 10); // Wait for the element to be visible
-
         setOrganisationNameInputField(organisationName);
         setOrganisationEmailInputField(organisationEmail);
         setAdministratorNameInputField(administratorName);
         setAdministratorEmailInputField(administratorEmail);
 
-        return clickSubmitButton();
+        return clickOrganisationDetailSubmitButton();
     }
+
+    public void setEmployeeNameInputField(String employeeName) {
+        set(employeeNameInputField, employeeName);
+    }
+
+    public void setEmployeeEmailInputField(String employeeEmail) {
+        set(employeeEmailInputField, employeeEmail);
+    }
+
+    public void setJobTitleEmployeeInputField(String jobTitle) {
+        set(jobTitleEmployeeInputField, jobTitle);
+    }
+
+    public SignUpPage clickEmployeeDetailSubmitButton() {
+        click(submitButton);
+        return new SignUpPage();
+    }
+
+    public SignUpPage fillEmployeeDetailsForm(String employeeName, String employeeEmail, String jobTitle) {
+        setEmployeeNameInputField(employeeName);
+        setEmployeeEmailInputField(employeeEmail);
+        setJobTitleEmployeeInputField(jobTitle);
+
+        return clickEmployeeDetailSubmitButton();
+
+    }
+
+    public SignUpPage clickNextIcon() {
+        click(nextIcon);
+        return new SignUpPage();
+    }
+
+    public void setRevenueForLastQuarterInputField(String revenueForLastQuarter) {
+        set(revenueForLastQuarterInputField, revenueForLastQuarter);
+    }
+
+    public void setProjectForLastQuarterInputField(String projectForLastQuarter) {
+        set(projectForLastQuarterInputField, projectForLastQuarter);
+    }
+
+    public void setTimeForLastQuarterInputField(String timeForLastQuarter) {
+        set(timeForLastQuarterInputField, timeForLastQuarter);
+    }
+
+    public void setNumberOfEmployeeLastQuarterInputField(String numberOfEmployeeLastQuarter) {
+        set(numberOfEmployeeLastQuarterInputField, numberOfEmployeeLastQuarter);
+    }
+
+    public DashboardPage clickMetricDetailsButton() {
+        click(submitButton);
+        return new DashboardPage();
+    }
+
+
+    public DashboardPage fillMetricDetailForm(String revenueForLastQuarter, String projectForLastQuarter, String timeForLastQuarter, String numberOfEmployeeLastQuarter) {
+        setRevenueForLastQuarterInputField(revenueForLastQuarter);
+        setProjectForLastQuarterInputField(projectForLastQuarter);
+        setTimeForLastQuarterInputField(timeForLastQuarter);
+        setNumberOfEmployeeLastQuarterInputField(numberOfEmployeeLastQuarter);
+
+        return clickMetricDetailsButton();
+    }
+
 
 
 }

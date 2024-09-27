@@ -1,5 +1,6 @@
 package com.promage.base;
 
+import com.promage.pages.DashboardPage;
 import com.promage.pages.SignInPage;
 import com.promage.pages.SignUpPage;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,6 @@ public class BaseTest {
     private WebDriver driver;
     protected BasePage basePage;
     protected SignInPage signInPage;
-    protected SignUpPage signUpPage;
     private String PROMAGE_URL = "https://promage-project-management-system.onrender.com/";
 
     @BeforeClass
@@ -32,7 +32,6 @@ public class BaseTest {
         basePage.setDriver(driver);
         setUtiliyDriver();
         signInPage = new SignInPage();
-        signUpPage = new SignUpPage();
     }
 
     @AfterClass
