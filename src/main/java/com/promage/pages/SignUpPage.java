@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class SignUpPage extends BasePage {
 
-    private By navigationTextBackToSignInPage = By.xpath("/html/body/div[1]/div[2]/div[2]/p");
+    private By navigationTextBackToSignInPage = By.xpath("//p[text()='Already part of an organization?']");
     private By organisationNameInputField = By.name("organisation_name");
     private By organisationEmailInputField = By.name("organisation_email");
     private By administratorNameInputField = By.name("administrator_name");
@@ -22,7 +22,7 @@ public class SignUpPage extends BasePage {
     private By timeForLastQuarterInputField = By.name("last_quarter_time");
     private By numberOfEmployeeLastQuarterInputField = By.name("last_quarter_resources");
 
-    private By submitButton = By.xpath("/html/body/div[1]/div[2]/div[2]/div/form/div[2]/button");
+    private By submitButton = By.xpath("//button[text()='Submit']");
     private By errorModal = By.cssSelector("li > div > div");
 
     // 1) Asserters method

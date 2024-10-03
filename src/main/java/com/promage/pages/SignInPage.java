@@ -8,9 +8,9 @@ public class SignInPage extends BasePage {
 
     private By emailInputField = By.name("email");
     private By employeeIDInputField = By.name("employee_id");
-    private By signInButton = By.xpath("/html/body/div[1]/div[2]/div[2]/div/form/button");
-    private By errorMessage = By.cssSelector("#\\:R9d7qbta\\:-form-item-message");
-    private By linkToSignupPage = By.xpath("/html/body/div[1]/div[2]/div[2]/p/a");
+    private By signInButton = By.xpath("//button[text()='Sign in']");
+    private By errorMessage = By.xpath("//p[contains(text(), 'please check your credentials')]");
+    private By linkToSignupPage = By.xpath("//a[text()='Sign up your organization']");
 
     public void setEmailInputField(String email) {
         set(emailInputField, email);
