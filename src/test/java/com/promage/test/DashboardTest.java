@@ -1,4 +1,9 @@
 package com.promage.test;
 
-public class DashboardTest {
+import com.promage.base.BaseTest;
+import org.testng.annotations.Test;
+
+public class DashboardTest extends BaseTest {
+
+
 }

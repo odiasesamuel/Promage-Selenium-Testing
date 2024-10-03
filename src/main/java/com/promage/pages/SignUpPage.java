@@ -25,6 +25,7 @@ public class SignUpPage extends BasePage {
     private By submitButton = By.xpath("/html/body/div[1]/div[2]/div[2]/div/form/div[2]/button");
     private By errorModal = By.cssSelector("li > div > div");
 
+    // 1) Asserters method
     public boolean isOrganisationFormDisplayed() {
         waitForElement(organisationNameInputField, 10); // Wait for the element to be visible
         return find(organisationNameInputField).isDisplayed();
@@ -43,6 +44,7 @@ public class SignUpPage extends BasePage {
         return find(errorModal).isDisplayed();
     }
 
+    // 2) Setters methods
     public void setOrganisationNameInputField(String organisationName) {
         set(organisationNameInputField, organisationName);
     }
@@ -59,11 +61,13 @@ public class SignUpPage extends BasePage {
         set(administratorEmailInputField, administratorEmail);
     }
 
+    // 3) Click methods
     public SignUpPage clickOrganisationDetailSubmitButton() {
         click(submitButton);
         return new SignUpPage();
     }
 
+    // 4) Convenience methods
     public SignUpPage fillOrganisationDetailsForm(String organisationName, String organisationEmail, String administratorName, String administratorEmail) {
         setOrganisationNameInputField(organisationName);
         setOrganisationEmailInputField(organisationEmail);
@@ -135,6 +139,10 @@ public class SignUpPage extends BasePage {
         return clickMetricDetailsButton();
     }
 
-
+// In a  Page there are three methods to write
+//    1) Asserters method
+//    2) Setters method
+//    3) Getters method
+//    4)
 
 }
