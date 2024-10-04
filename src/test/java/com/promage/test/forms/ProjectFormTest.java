@@ -11,21 +11,21 @@ public class ProjectFormTest extends BaseTest {
 
     @Test
     public void testProjectCreation() {
-        DashboardPage dashboardPage = signInPage.logIntoApplication("john.harris@gmail.com", "JHN789");
+        DashboardPage dashboardPage = signInPage.logIntoApplication(testData.getProperty("signInSuccessEmployeeEmail"), testData.getProperty("signInSuccessEmployeeID"));
         Assert.assertTrue(dashboardPage.isDashboardheaderDisplayed(), "\n Sign in was not successful \n");
 
         ProjectFormComponent projectFormComponent = dashboardPage.clickCreateNewProjectTab();
         Assert.assertTrue(projectFormComponent.isProjectFormDisplayed());
 
-        String[] projectTeam = {"Charlie Brown", "Bob Smith"};
-        projectFormComponent.fillProjectForm("Nelsa Web Application", "Alice Johnson", "600", "On going", "70", "26", projectTeam);
+        String[] projectTeam = testData.getProperty("teamMembers").split(",");
+        projectFormComponent.fillProjectForm(testData.getProperty("projectName"), testData.getProperty("projectManager"), testData.getProperty("projectRevenue"), testData.getProperty("projectStatus"), testData.getProperty("projectProgress"), testData.getProperty("projectDueDate"), projectTeam);
 
         String newProjectName = dashboardPage.getNewProjectName();
         String newProjectManager = dashboardPage.getNewProjectManager();
         String newProjectStatus = dashboardPage.getNewProjectStatus();
 
-        Assert.assertEquals(newProjectName, "Nelsa Web Application");
-        Assert.assertEquals(newProjectManager, "Alice Johnson");
-        Assert.assertEquals(newProjectStatus, "On going");
+        Assert.assertEquals(newProjectName, testData.getProperty("projectName"));
+        Assert.assertEquals(newProjectManager, testData.getProperty("projectManager"));
+        Assert.assertEquals(newProjectStatus, testData.getProperty("projectStatus"));
     }
 }

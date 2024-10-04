@@ -9,8 +9,8 @@ public class SignInTest extends BaseTest {
 
     @Test
     public void testSignInError() {
-        signInPage.setEmailInputField("peter.quil@gmail.com");
-        signInPage.setEmployeeIDInputField("PET490");
+        signInPage.setEmailInputField(testData.getProperty("signInErrorEmployeeEmail"));
+        signInPage.setEmployeeIDInputField(testData.getProperty("signInErrorEmployeeID"));
         signInPage.clickSignInButton();
         String actualErrorMessage = signInPage.getErrorMessage();
 
@@ -19,7 +19,7 @@ public class SignInTest extends BaseTest {
 
     @Test
     public void testSuccessfulSignIn() {
-        DashboardPage dashboardPage = signInPage.logIntoApplication("john.harris@gmail.com", "JHN789");
+        DashboardPage dashboardPage = signInPage.logIntoApplication(testData.getProperty("signInSuccessEmployeeEmail"), testData.getProperty("signInSuccessEmployeeID"));
 
         Assert.assertTrue(dashboardPage.isDashboardheaderDisplayed(), "Sign in was not successful");
     }

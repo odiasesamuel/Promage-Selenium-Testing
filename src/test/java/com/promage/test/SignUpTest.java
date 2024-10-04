@@ -16,15 +16,15 @@ public class SignUpTest extends BaseTest {
         SignUpPage signUpPage = signInPage.clickLinkToSignUpPage();
 
         Assert.assertTrue(signUpPage.isOrganisationFormDisplayed(), "\n Organisation form is not displayed \n");
-        signUpPage.fillOrganisationDetailsForm("Boltzmenn", "boltzmenn@gmail.com","Biodun Ajayi", "biodunajayi@gmail.com");
+        signUpPage.fillOrganisationDetailsForm(testData.getProperty("organisationNameError"), testData.getProperty("organisationEmailError"),testData.getProperty("administratorName"), testData.getProperty("administratorEmail"));
 
         Assert.assertTrue(signUpPage.isEmployeeFormDisplayed(), "\n Employee form is not displayed \n");
-        signUpPage.fillEmployeeDetailsForm("Kunle Ojo", "kunle.ojo@gamil.com", "Software Engineer");
-        signUpPage.fillEmployeeDetailsForm("Peter Ejehi", "peter.ejehi@gmail.com", "Product Designer");
+        signUpPage.fillEmployeeDetailsForm(testData.getProperty("employeeName1"), testData.getProperty("employeeEmail1"), testData.getProperty("jobTitle1"));
+        signUpPage.fillEmployeeDetailsForm(testData.getProperty("employeeName2"), testData.getProperty("employeeEmail2"), testData.getProperty("jobTitle2"));
         signUpPage.clickNextIcon();
 
         Assert.assertTrue(signUpPage.isMetricFormDisplayed(), "\n Metrics form is not displayed \n");
-        DashboardPage dashboardPage = signUpPage.fillMetricDetailForm("600000000", "10", "12000", "12");
+        DashboardPage dashboardPage = signUpPage.fillMetricDetailForm(testData.getProperty("revenueForLastQuarter"), testData.getProperty("projectForLastQuarter"), testData.getProperty("timeForLastQuarter"), testData.getProperty("numberOfEmployeeLastQuarter"));
 
         Assert.assertTrue(signUpPage.isErrorModalDisplayed(), "\n Error Modal was not displayed Signup was successful \n");
 
@@ -36,15 +36,15 @@ public class SignUpTest extends BaseTest {
         SignUpPage signUpPage = signInPage.clickLinkToSignUpPage();
 
         Assert.assertTrue(signUpPage.isOrganisationFormDisplayed(), "\n Organisation form is not displayed \n ");
-        signUpPage.fillOrganisationDetailsForm("Lamdex Enterprise", "lamdex_enterprise@gmail.com","Biodun Ajayi", "biodunajayi@gmail.com");
+        signUpPage.fillOrganisationDetailsForm(testData.getProperty("organisationName"), testData.getProperty("organisationEmail"),testData.getProperty("administratorName"), testData.getProperty("administratorEmail"));
 
         Assert.assertTrue(signUpPage.isEmployeeFormDisplayed(), "\n Employee form is not displayed \n");
-        signUpPage.fillEmployeeDetailsForm("Kunle Ojo", "kunle.ojo@gamil.com", "Software Engineer");
-        signUpPage.fillEmployeeDetailsForm("Peter Ejehi", "peter.ejehi@gmail.com", "Product Designer");
+        signUpPage.fillEmployeeDetailsForm(testData.getProperty("employeeName1"), testData.getProperty("employeeEmail1"), testData.getProperty("jobTitle1"));
+        signUpPage.fillEmployeeDetailsForm(testData.getProperty("employeeName2"), testData.getProperty("employeeEmail2"), testData.getProperty("jobTitle2"));
         signUpPage.clickNextIcon();
 
         Assert.assertTrue(signUpPage.isMetricFormDisplayed(), "\n Metrics form is not displayed \n ");
-        DashboardPage dashboardPage = signUpPage.fillMetricDetailForm("600000000", "10", "12000", "12");
+        DashboardPage dashboardPage = signUpPage.fillMetricDetailForm(testData.getProperty("revenueForLastQuarter"), testData.getProperty("projectForLastQuarter"), testData.getProperty("timeForLastQuarter"), testData.getProperty("numberOfEmployeeLastQuarter"));
 
         Assert.assertTrue(dashboardPage.isDashboardheaderDisplayed(), "\n Signup was not successful \n");
     }
