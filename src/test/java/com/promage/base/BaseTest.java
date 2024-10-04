@@ -5,6 +5,8 @@ import com.promage.pages.SignInPage;
 import com.promage.pages.SignUpPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -25,9 +27,6 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-
         testData = new Properties();
         try {
             FileInputStream input = new FileInputStream("src/test/resources/testData.properties");
@@ -35,6 +34,17 @@ public class BaseTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        String browser = testData.getProperty("browser");
+        if(browser.equalsIgnoreCase("chrome")) {
+            driver = new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("edge")) {
+            driver = new EdgeDriver();
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            driver = new FirefoxDriver();
+        }
+
+        driver.manage().window().maximize();
     }
 
     @BeforeMethod
