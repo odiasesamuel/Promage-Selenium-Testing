@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class DashboardTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void testProjectCreation() {
         DashboardPage dashboardPage = signInPage.logIntoApplication(testData.getProperty("signInSuccessEmployeeEmail"), testData.getProperty("signInSuccessEmployeeID"));
         Assert.assertTrue(dashboardPage.isDashboardheaderDisplayed(), "\n Sign in was not successful \n");

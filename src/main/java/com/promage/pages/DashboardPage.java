@@ -15,7 +15,7 @@ public class DashboardPage extends BasePage {
     private By newProjectStatus = By.xpath("//tbody//tr[1]//td[4]/div[text()='On going']");
 
     public boolean isDashboardheaderDisplayed() {
-        waitForElement(dashboardHeader, 20);
+        waitForElementVisibility(dashboardHeader, 20);
         return find(dashboardHeader).isDisplayed();
     }
 
@@ -30,7 +30,7 @@ public class DashboardPage extends BasePage {
     }
 
     public String getNewProjectName() {
-        waitForElement(newProjectName, 10);
+        waitForElementVisibility(newProjectName, 10);
         return find(newProjectName).getText();
     }
 

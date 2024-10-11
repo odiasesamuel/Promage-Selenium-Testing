@@ -33,7 +33,7 @@ public class SignInPage extends BasePage {
     }
 
     public String getErrorMessage() {
-        WebElement errorElement = waitForElement(errorMessage, 10);
+        WebElement errorElement = waitForElementVisibility(errorMessage, 10);
         return errorElement.getText();
     }
 

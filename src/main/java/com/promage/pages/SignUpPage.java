@@ -27,7 +27,7 @@ public class SignUpPage extends BasePage {
 
     // 1) Asserters method
     public boolean isOrganisationFormDisplayed() {
-        waitForElement(organisationNameInputField, 10); // Wait for the element to be visible
+        waitForElementVisibility(organisationNameInputField, 10); // Wait for the element to be visible
         return find(organisationNameInputField).isDisplayed();
     }
 
@@ -40,7 +40,7 @@ public class SignUpPage extends BasePage {
     }
 
     public boolean isErrorModalDisplayed() {
-        waitForElement(errorModal, 10);
+        waitForElementVisibility(errorModal, 10);
         return find(errorModal).isDisplayed();
     }
 

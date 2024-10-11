@@ -19,9 +19,11 @@ public class ProjectFormComponent extends BasePage {
     private By projectTeamSelectField = By.cssSelector("input[role='combobox'][aria-autocomplete='list']");
     private By createProjectButton = By.xpath("//button[text()='Create Project']");
     private By reviewProjectButton = By.xpath("//button[text()='Review Project']");
+    private By deleteProjectButton = By.xpath("//button[text()='Delete Project']");
+    private By confirmProjectDeleteButton = By.xpath("//button[text()='Continue']");
 
     public boolean isProjectFormDisplayed() {
-        waitForElement(projectFormHeader, 10);
+        waitForElementVisibility(projectFormHeader, 10);
         return find(projectFormHeader).isDisplayed();
     }
 
@@ -33,6 +35,12 @@ public class ProjectFormComponent extends BasePage {
 
     public ProjectPage clickReviewProjectButton() {
         click(reviewProjectButton);
+        return new ProjectPage();
+    }
+
+    public ProjectPage clickDeleteProjectButton() {
+        click(deleteProjectButton);
+        click(confirmProjectDeleteButton);
         return new ProjectPage();
     }
 

@@ -21,9 +21,14 @@ public class BasePage {
         return driver.findElement(locator);
     }
 
-    protected WebElement waitForElement(By locator, int timeoutInSeconds) {
+    protected WebElement waitForElementVisibility(By locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    protected boolean waitForElementInVisibility(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
     protected void set(By locator, String text) {

@@ -10,21 +10,20 @@ public class ProjectPage extends BasePage {
     private By reviewedProjectName = By.xpath("//tbody//tr[1]//td[1][text()='Kaylee E-commerce website']");
     private By reviewedProjectManager = By.xpath("//tbody//tr[1]//td[2][text()='Charlie Brown']");
     private By reviewedProjectStatus = By.xpath("//tbody//tr[1]//td[4]/div[text()='Completed']");
-    private By reviewButton = By.xpath("//tbody//tr[1]//td[1][text()='Nelsa Web Application']/..//button[text()='Review']");
 
     public boolean isProjectPageDisplayed() {
-        waitForElement(projectHeader, 20);
+        waitForElementVisibility(projectHeader, 20);
        return find(projectHeader).isDisplayed();
     }
 
-    public ProjectFormComponent clickReviewProjectButton() {
-        click(reviewButton);
+    public ProjectFormComponent clickReviewProjectButton(String projectName) {
+        click(By.xpath("//tbody//tr[1]//td[1][text()='" + projectName + "']/..//button[text()='Review']"));
 
         return new ProjectFormComponent();
     }
 
     public String getReviwedProjectName() {
-        waitForElement(reviewedProjectName, 10);
+        waitForElementVisibility(reviewedProjectName, 10);
         return find(reviewedProjectName).getText();
     }
 
@@ -36,5 +35,15 @@ public class ProjectPage extends BasePage {
         return find(reviewedProjectStatus).getText();
     }
 
+    public boolean isReviewedProjectDisplayed() {
+        boolean isInvisible = waitForElementInVisibility(reviewedProjectName, 20);
+
+        if (!isInvisible) {
+            return find(reviewedProjectName).isDisplayed() &&
+                    find(reviewedProjectManager).isDisplayed() &&
+                    find(reviewedProjectStatus).isDisplayed();
+        }
+        return false;
+    }
 
 }
