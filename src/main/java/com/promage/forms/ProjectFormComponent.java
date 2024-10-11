@@ -2,8 +2,10 @@ package com.promage.forms;
 
 import com.promage.base.BasePage;
 import com.promage.pages.DashboardPage;
+import com.promage.pages.ProjectPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+
+import static utilities.JavaScriptUtility.clearInputField;
 
 public class ProjectFormComponent extends BasePage {
 
@@ -15,16 +17,27 @@ public class ProjectFormComponent extends BasePage {
     private By projectProgressInputField = By.name("progress");
     private By projectDueDateInputField = By.xpath("//span[text()='Pick a date']/..");
     private By projectTeamSelectField = By.cssSelector("input[role='combobox'][aria-autocomplete='list']");
-    private By submitButton = By.xpath("//button[text()='Create Project']");
+    private By createProjectButton = By.xpath("//button[text()='Create Project']");
+    private By reviewProjectButton = By.xpath("//button[text()='Review Project']");
 
     public boolean isProjectFormDisplayed() {
         waitForElement(projectFormHeader, 10);
         return find(projectFormHeader).isDisplayed();
     }
 
+    public DashboardPage clickCreateProjectButtonButton() {
+        click(createProjectButton);
+        reloadPage();
+        return new DashboardPage();
+    }
+
+    public ProjectPage clickReviewProjectButton() {
+        click(reviewProjectButton);
+        return new ProjectPage();
+    }
+
     public DashboardPage fillProjectForm(String projectName, String projectManager, String projectRevenue, String projectStatus, String projectProgress, String projectDueDate, String[] projectTeam) {
         set(projectNameInputField, projectName);
-        // Don't send keys for a select field: why test is falling
         selectVisibleText(projectManagerSelectField, projectManager);
         set(projectRevenueInputField, projectRevenue);
         selectVisibleText(projectStatusSelectField, projectStatus);
@@ -37,9 +50,18 @@ public class ProjectFormComponent extends BasePage {
             );
         }
 
-        click(submitButton);
+        return clickCreateProjectButtonButton();
+    }
 
-        return new DashboardPage();
+    public ProjectPage reviewProjectForm(String projectName, String projectManager, String projectRevenue, String projectStatus, String projectProgress) {
+        clearInputField(projectNameInputField);
+        set(projectNameInputField, projectName);
+        selectVisibleText(projectManagerSelectField, projectManager);
+        clearInputField(projectRevenueInputField);
+        set(projectRevenueInputField, projectRevenue);
+        selectVisibleText(projectStatusSelectField, projectStatus);
+
+        return clickReviewProjectButton();
     }
 
 

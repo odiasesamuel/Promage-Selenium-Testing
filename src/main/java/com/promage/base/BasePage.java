@@ -40,6 +40,10 @@ public class BasePage {
         find(locator).click();
     }
 
+    protected void reloadPage() {
+        driver.navigate().refresh();
+    }
+
     public static void delay(int milliseconds) {
         // Demo Purpose
         try {

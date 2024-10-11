@@ -22,4 +22,10 @@ public class JavaScriptUtility extends Utility{
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("window.sessionStorage.clear();");
     }
+
+    public static void clearInputField(By locator) {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor executor =(JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].value = '';", element);
+    }
 }
