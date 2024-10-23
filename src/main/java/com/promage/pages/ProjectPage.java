@@ -13,7 +13,7 @@ public class ProjectPage extends BasePage {
 
     public boolean isProjectPageDisplayed() {
         waitForElementVisibility(projectHeader, 20);
-       return find(projectHeader).isDisplayed();
+        return find(projectHeader).isDisplayed();
     }
 
     public ProjectFormComponent clickReviewProjectButton(String projectName) {
