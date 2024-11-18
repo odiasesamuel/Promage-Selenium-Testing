@@ -9,6 +9,7 @@ public class DashboardPage extends BasePage {
     private By dashboardHeader = By.xpath("//h1[contains(@class, 'font-medium')]//span[text()='Dashboard']");
     private By createNewProjectTab = By.xpath("//span[text()='Create new ']/..");
     private By projectPageLink = By.xpath("//a[@href='/project']");
+    private By taskPageLink = By.xpath("//a[@href='/tasks']");
 
     private By newProjectName = By.xpath("//tbody//tr[1]//td[1][text()='Nelsa Web Application']");
     private By newProjectManager = By.xpath("//tbody//tr[1]//td[2][text()='Alice Johnson']");
@@ -26,7 +27,12 @@ public class DashboardPage extends BasePage {
 
     public ProjectPage navigateToProjectPage() {
         click(projectPageLink);
-        return  new ProjectPage();
+        return new ProjectPage();
+    }
+
+    public TaskPage navigateToTaskPage() {
+        click(taskPageLink);
+        return new TaskPage();
     }
 
     public String getNewProjectName() {
