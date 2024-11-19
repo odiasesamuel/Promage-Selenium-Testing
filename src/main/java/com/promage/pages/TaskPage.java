@@ -10,7 +10,8 @@ public class TaskPage extends BasePage {
     private By assignTaskButton = By.xpath("//button[text()='Assign task']");
     private By newTaskDescription = By.xpath("//tbody//tr[1]//td[1][text()='Implement authorization for DBKS portal']");
     private By employeeAssignedToTask = By.xpath("//table/tbody/tr[1]/td[2][text()='Tom Parker']");
-    private By checkedTask = By.xpath("//table/tbody/tr[1]/td[3]/div[text()='No']");
+    private By uncheckedTask = By.xpath("//table/tbody/tr[1]/td[3]/div[text()='No']");
+    private By checkedTask = By.xpath("//table/tbody/tr[1]/td[3]/div[text()='Yes']");
     private By taskStatus = By.xpath("//table/tbody/tr[1]/td[4]/div[text()='On going']");
     private By reviwedTaskDescription = By.xpath("//tbody//tr[1]//td[1][text()='Refactor Authentication implementation']");
     private By reviewTaskStatus = By.xpath("//table/tbody/tr[1]/td[4]/div[text()='Approved']");
@@ -41,6 +42,10 @@ public class TaskPage extends BasePage {
         return find(employeeAssignedToTask).getText();
     }
 
+    public String getUnCheckedTask() {
+        return find(uncheckedTask).getText();
+    }
+
     public String getCheckedTask() {
         return find(checkedTask).getText();
     }
@@ -56,6 +61,16 @@ public class TaskPage extends BasePage {
 
     public String getReviewedTaskStatus() {
         return find(reviewTaskStatus).getText();
+    }
+
+    public boolean isReviewedTaskDisplayed() {
+        boolean isInvisible = waitForElementInVisibility(reviwedTaskDescription, 20);
+
+        if(!isInvisible) {
+            return find(reviwedTaskDescription).isDisplayed() &&
+                    find(reviewTaskStatus).isDisplayed();
+        }
+        return false;
     }
 
 
