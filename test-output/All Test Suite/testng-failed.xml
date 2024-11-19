@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="C:/Users/user/IdeaProjects/Promage-Selenium-Testing(failed)">
+  <test thread-count="5" name="C:/Users/user/IdeaProjects/Promage-Selenium-Testing/src/test(failed)">
     <classes>
-      <class name="com.promage.test.SignUpTest">
+      <class name="com.promage.test.TaskTest">
         <methods>
           <include name="loadApplication"/>
           <include name="takeFailedResultScreenshot"/>
           <include name="setUp"/>
+          <include name="testAssigningNewTask"/>
+          <include name="testTaskDeletion"/>
           <include name="tearDown"/>
-          <include name="testSuccessfulSignUp"/>
         </methods>
-      </class> <!-- com.promage.test.SignUpTest -->
+      </class> <!-- com.promage.test.TaskTest -->
     </classes>
-  </test> <!-- C:/Users/user/IdeaProjects/Promage-Selenium-Testing(failed) -->
+  </test> <!-- C:/Users/user/IdeaProjects/Promage-Selenium-Testing/src/test(failed) -->
 </suite> <!-- Failed suite [All Test Suite] -->

@@ -1,2 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/user/IdeaProjects/Promage-Selenium-Testing"><classes><class name="com.promage.test.DashboardTest"><methods><include name="testProjectCreation"/></methods></class><class name="com.promage.test.ProjectTest"><methods><include name="testReviewProject"/><include name="testProjectDeletion"/></methods></class><class name="com.promage.test.SignInTest"><methods><include name="testSignInError"/><include name="testSuccessfulSignIn"/></methods></class><class name="com.promage.test.SignUpTest"><methods><include name="testSignUpError"/><include name="testSuccessfulSignUp"/></methods></class></classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/user/IdeaProjects/Promage-Selenium-Testing/src/test">
+        <classes>
+            <class name="com.promage.test.DashboardTest">
+                <methods>
+                    <include name="testProjectCreation"/>
+                </methods>
+            </class>
+            <class name="com.promage.test.ProjectTest">
+                <methods>
+                    <include name="testReviewProject"/>
+                    <include name="testProjectDeletion"/>
+                </methods>
+            </class>
+            <class name="com.promage.test.SignInTest">
+                <methods>
+                    <include name="testSignInError"/>
+                    <include name="testSuccessfulSignIn"/>
+                </methods>
+            </class>
+            <class name="com.promage.test.SignUpTest">
+                <methods>
+                    <include name="testSignUpError"/>
+                    <include name="testSuccessfulSignUp"/>
+                </methods>
+            </class>
+            <class name="com.promage.test.TaskTest">
+                <methods>
+                    <include name="testAssigningNewTask"/>
+                    <include name="checkTaskInAssignedEmployeeDashboard"/>
+                    <include name="testReviewTask"/>
+                    <include name="testTaskDeletion"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
